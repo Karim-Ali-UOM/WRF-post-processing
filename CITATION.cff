@@ -3,8 +3,8 @@
 
 cff-version: 1.2.0
 title: WRF-post-processing 
-version: 1.1
-doi: 10.5281/zenodo.7507740 
+version: 1.3
+doi: 10.5281/zenodo.7508134 
 message: >-
   If you use this software, please cite it using the
   metadata from this file.

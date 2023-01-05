@@ -30,8 +30,6 @@ WRF-postProcessing
 
     TurbineData
     (
-        d2 = /home/hydro/karim/wrfSimulations/NorthSea/processed-turbine-data-d2.csv
-        d3 = /home/hydro/karim/wrfSimulations/NorthSea/processed-turbine-data-d3.csv
         Coordinates = /home/hydro/karim/wrfSimulations/NorthSea/windturbines.txt
         TurbineTypes = /home/hydro/karim/wrfSimulations/NorthSea/wind-turbine-*.tbl
         WindFarmNames = /home/hydro/karim/wrfSimulations/NorthSea/farmNames.txt

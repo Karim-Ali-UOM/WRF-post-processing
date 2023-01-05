@@ -111,8 +111,7 @@ def readTurbLoc(lines):
     for line in lines:
         entry = splitline(line,"=")
         identifier = entry[0] 
-        if identifier[0] == "d": domainIndex.append(int(identifier[1]))
-        elif identifier == turbCoordIdentifier(): domainIndex.append(turbCoordCode())
+        if identifier == turbCoordIdentifier(): domainIndex.append(turbCoordCode())
         elif identifier == turbineTypesTablesIdentifier(): domainIndex.append(turbTypeCode())
         elif identifier == windFarmsnamesIdentifier(): domainIndex.append(wfnamesCode())
         turbDataFileLoc.append(entry[1])
@@ -127,9 +126,6 @@ def readOrders(lines, msglvl):
         identNames = []
         intervalsList = []
         orderPacket = extractPackets(lines, order)
-        #keywords = extractKeywords(orderPacket)
-        #activeIndex = keywords.index(activeIdentifier())
-        #if splitline(entry, "=")
 
         for keyword in extractKeywords(orderPacket):
             if keyword in subpacketIdentifiers():

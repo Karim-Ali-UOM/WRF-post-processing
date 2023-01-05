@@ -1,0 +1,16 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: WRF-post-processing 
+version: 1.0
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Karim
+    family-names: Ali
+    email: karim.ali@manchester.ac.uk
+    affiliation: University of Manchester
+    orcid: 'https://orcid.org/0000-0003-4198-5128'

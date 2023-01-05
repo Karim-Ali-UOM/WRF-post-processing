@@ -1,0 +1,214 @@
+WRF-postProcessing
+(    
+    # this is a comment
+    Directories
+    (
+        /home/hydro/karim/wrfSimulations/NorthSea/F100,       F100,       wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/F25,        F25,        wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/F100-NE,    F100-NE,    wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/V120,       V120,       wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/V100,       V100,       wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/V80,        V80,        wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/A100,       A100,       wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/A90,        A90,        wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/A80,        A80,        wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/R100,       R100,       wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/R25,        R25,        wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/PAN,        PAN,        wrfout_d03,       1
+        /home/hydro/karim/wrfSimulations/NorthSea/NT,         NT,         wrfout_d03,       1
+    )
+
+    Reference 
+    (
+        NT
+    )
+
+    Output
+    (
+        /home/hydro/karim/wrfSimulations/NorthSea/results
+    )
+
+    TurbineData
+    (
+        d2 = /home/hydro/karim/wrfSimulations/NorthSea/processed-turbine-data-d2.csv
+        d3 = /home/hydro/karim/wrfSimulations/NorthSea/processed-turbine-data-d3.csv
+        Coordinates = /home/hydro/karim/wrfSimulations/NorthSea/windturbines.txt
+        TurbineTypes = /home/hydro/karim/wrfSimulations/NorthSea/wind-turbine-*.tbl
+        WindFarmNames = /home/hydro/karim/wrfSimulations/NorthSea/farmNames.txt
+    )
+
+    Orders
+    (
+        GodeWind-Wake-90m
+        (
+            Active = no
+            Type = windFarmWakeStats
+            Duration
+            (
+                Start = 14-10-2017, 12:00:00
+                End =   15-10-2017, 00:00:00
+            )
+            Height = 90
+            RefWindFarm = 1
+            Pairs
+            (
+                F25, F100
+                F100-NE, F100
+                PAN, F100
+                R100, F100
+                V100, F100
+                A100, F100
+                R25, R100
+                V80, V100
+                V120, V100
+                A80, A100
+                A90, A100
+            )
+        )
+
+        TransectFlights
+        (
+            Active = no
+            Type = TransectFlightPlot
+            AssistingFiles
+            (
+                /home/hydro/karim/wrfSimulations/NorthSea/MA-transect*-20171014_flight39_airborne.csv
+            )
+        )
+
+        FINO1-temporal
+        (
+            Active = yes
+            Type = TemporalPlot
+            Location = N 54d 0m 53.5s, E 6d 35m 15.5s
+            Duration
+            (
+                Start = 14-10-2017, 00:00:00
+                End =   15-10-2017, 00:00:00
+            )
+            AssistingFiles
+            (
+                /home/hydro/karim/wrfSimulations/NorthSea/FINO1_winddirection_vane_91m_315deg_20171014_20171015.dat
+                /home/hydro/karim/wrfSimulations/NorthSea/FINO1_windspeed_cup_102m_20171014_20171015.dat
+                /home/hydro/karim/wrfSimulations/NorthSea/FINO1_airtemperature_101m_20171014_20171015.dat
+            )
+            RefFile = /home/hydro/karim/wrfSimulations/NorthSea/wrfinput_d03
+        )
+
+        FINO-profiles
+        (
+            Active = no
+            Type = VerticalProfilesPlot
+            Location = N 54d 0m 53.5s, E 6d 35m 15.5s
+            Duration
+            (
+                Start = 14-10-2017, 12:00:00
+                End =   15-10-2017, 00:00:00
+            )
+            RefFile = /home/hydro/karim/wrfSimulations/NorthSea/wrfinput_d03
+            RefWindFarm = 3
+            Limits = 0, 400
+        )
+
+        Wake-90m
+        (
+            Active = no
+            Type = WakeContourPlot
+            Time = 14-10-2017, 17:17:00
+            Levels = 2, 5, 10, 15, 20
+            Height = 90
+            Zoom = 5.5, 9.5, 53.5, 55
+        )
+
+        SAR
+        (
+            Active = no
+            Type = SARplot
+            AssistingFiles
+            (
+                /home/hydro/karim/wrfSimulations/NorthSea/S1A_ESA_2017_10_14_17_17_12_0561316632_7.37E_53.31N_VV_C11_GFS025CDF.nc
+                /home/hydro/karim/wrfSimulations/NorthSea/S1A_ESA_2017_10_14_17_17_37_0561316657_6.90E_54.80N_VV_C11_GFS025CDF.nc 
+            )
+            Time = 14-10-2017, 17:17:00
+            Limits = 3, 12
+            Zoom = 5.5, 9.0, 53.5, 55
+        )
+
+        domainBoundaries
+        (
+            Active = no
+            Type = domainPlot
+            RefFile = /home/hydro/karim/wrfSimulations/NorthSea/F100/wrfout_d0*_2017-10-14_00:00:00
+            Boundaries = -25, 31, 36.5, 63
+            Zoom = 5.7, 7.9, 53.6, 54.65
+            DroneFiles = /home/hydro/karim/wrfSimulations/NorthSea/transect*-20171014_flight39_airborne.csv
+        )
+
+        speedVGrad
+        (
+            Active = no
+            Type = speedVerticalGradient
+            Location = N 54d 0m 53.5s, E 6d 35m 15.5s
+            Duration
+            (
+                Start = 14-10-2017, 12:00:00
+                End =   15-10-2017, 00:00:00
+            )
+            RefWindFarm = 3
+        )
+
+        qBudget
+        (
+            Active = no
+            Type = qVerticalAverage
+            Location = N 54d 0m 53.5s, E 6d 35m 15.5s
+            Duration
+            (
+                Start = 14-10-2017, 12:00:00
+                End =   15-10-2017, 00:00:00
+            )
+            Segments
+            (
+                [0, lowerTip(3)[
+                [lowerTip(3), upperTip(3)]
+                ]upperTip(3), aboveHub(3/1)]
+                ]aboveHub(3/1), 400]
+            )
+        )
+
+        CapacityFactors
+        (
+            Active = no
+            Type = windFarmsCapacityFactors
+            WindFarmsIndices = 1,2,3,5,6,7,8,9,10,11,12,13
+            Intervals
+            (
+                1200$-$1800
+                (
+                    Start = 14-10-2017, 12:00:00
+                    End =   14-10-2017, 18:00:00
+                )
+                1800$-$0000
+                (
+                    Start = 14-10-2017, 18:00:00
+                    End =   15-10-2017, 00:00:00
+                )
+            )
+
+            Pairs
+            (
+                F25, F100
+                F100-NE, F100
+                PAN, F100
+                R100, F100
+                V100, F100
+                A100, F100
+                R25, R100
+                V80, V100
+                V120, V100
+                A80, A100
+                A90, A100
+            )
+        )       
+    )
+)

@@ -60,7 +60,7 @@ class qbudget(order):
                 includeLimits[isegment,1] = segmentToMeters(segment, globe)
 
         # Identify the closest grid cell
-        message("Finding the closes grid-cell for all cases", msglvl)
+        message("Finding the closest grid-cell for all cases", msglvl)
         self.verticalProfile.closestGridCell(globe)
 
         for interval in self.intervals:
@@ -70,6 +70,7 @@ class qbudget(order):
             legendHandles = []
             kinterval = self.intervals.index(interval)
             avgFieldsHolder = zeros([len(self.segments), len(globe.dirs), len(self.fields)])
+            dh = limMeters[-1, 1] - limMeters[0, 0]
 
             for dir in globe.dirs:
                 idir = globe.dirs.index(dir)
@@ -92,12 +93,12 @@ class qbudget(order):
                         isegment = self.segments.index(segment)
                         i1 = int(limIndices[idir,isegment,0])
                         i2 = int(limIndices[idir,isegment,1])
-                        avgFieldsHolder[isegment, idir, ifield] = gain* trapz(dataholder[i1:i2], zholder[i1:i2]) / (zholder[i2-1] - zholder[i1])
+                        avgFieldsHolder[isegment, idir, ifield] = gain* trapz(dataholder[i1:i2], zholder[i1:i2]) / dh
                 msglvl -= 1
             msglvl -= 1
 
-            # convert q2 from m2/s2 to cm2/s2:
-            avgFieldsHolder = avgFieldsHolder * 10000
+            # scale q2
+            avgFieldsHolder = avgFieldsHolder * 1000
 
             # all vertical averages are calculated
             message("Formatting figure", msglvl)
@@ -136,7 +137,7 @@ class qbudget(order):
                 ax.set_xticklabels(globe.labels, fontsize = labelsize, rotation = 45)
                 if row != nrows-1:
                     ax.xaxis.set_ticklabels([])
-                ax.set_ylabel("$\mathrm{[cm^2\,s^{-2}]}$", fontsize = labelsize)
+                ax.set_ylabel("$\\times 10^{-3}\, \mathrm{[cm^2\,s^{-2}]}$", fontsize = labelsize)
                 ax.set_ylim([1.05 * min(yoffsetdown), 1.15 * max(yoffsetup)])
 
                 title = '%g' %limMeters[isegment, 0] + " m $-$ " + '%g' %limMeters[isegment, 1] + " m"
@@ -148,6 +149,6 @@ class qbudget(order):
 
             message("Saving figure", msglvl)
             fig.legend(handles = legendHandles, loc = [0.32, 0.94], ncol=5, prop={'size': legendsize})
-            fig.subplots_adjust(bottom=0.1, top=0.92, left=0.1, right=0.95, wspace=0.3, hspace=0.1)
+            fig.subplots_adjust(bottom=0.1, top=0.92, left=0.1, right=0.95, wspace=0.3, hspace=0.225)
             fig.savefig(outdir + "/" + self.name + "-I(" + interval.name + ").pdf")
             fig.clf()

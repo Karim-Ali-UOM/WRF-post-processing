@@ -142,7 +142,7 @@ class temporalPlot(order):
                     meas = [avgData[k][header.index("Value")] for k in range(len(avgData))]
                 elif field == tkename():
                     iax = 6
-                    meas = [avgData[k][header.index("Deviation")] for k in range(len(avgData))]
+                    meas = [float("Nan") for k in range(len(avgData))]
                 
                 ax = axgs[iax]
                 

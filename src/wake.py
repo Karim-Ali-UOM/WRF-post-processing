@@ -212,7 +212,7 @@ class windFarmWakeStats(order):
         labelsize = 7
         ticksize = 6
         legendsize = 6
-        levelcolors = ["darkred", "darkgoldenrod", "darkolivegreen"]
+        levelcolors = ["darkred", "darkgoldenrod", "tab:blue"]
         areatags = ["$\mathrm{\geq 20\%}$", "$\mathrm{15\% - 20\%}$", "$\mathrm{10\% - 15\%}$"]
         disttags = ["$\mathrm{20\%}$", "$\mathrm{15\%}$", "$\mathrm{10\%}$"]
         levels = [20,15,10]

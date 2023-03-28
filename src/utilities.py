@@ -464,7 +464,7 @@ def loadDefaultColors():
     'sienna','peru','tan','orange','darkolivegreen','deeppink','crimson']
 
 def loadIntervalsColors():
-    return ["darkred", "darkolivegreen"]
+    return ["darkred", "tab:blue"]
 
 def locStrToFloat(location):
     splitdata = splitline(location, ",")

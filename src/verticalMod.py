@@ -141,7 +141,7 @@ class verticalProfilesPlot(order):
         diameter = globe.turbineTypeDiameter(turbType)
 
         fields = [mtendName(), qtName(), speedName(), tkename(), directionName(), tempName()]
-        symbols = ["$\mathcal{M}$", "$\mathcal{Q}$", "$-\mathrm{\Delta U}$", "TKE", "$\mathrm{\Delta \phi}$", "$\mathrm{\Delta}$T"]
+        symbols = ["$f_U$", "$\mathcal{Q}$", "$-\mathrm{\Delta U}$", "TKE", "$\mathrm{\Delta \phi}$", "$\mathrm{\Delta}$T"]
         units = ["[$\mathrm{cm\,s^{-2}}$]", "[$\mathrm{m^2\,s^{-2}}$]", "[$\mathrm{m\,s^{-1}}$]", "[$\mathrm{m^2\,s^{-2}}$]",
                 "[$\mathrm{^\circ}$]", "[$\mathrm{^\circ\!C}$]"]
         colordict = {"A100":"tab:red", "A90":"tab:red", "A80":"tab:red", "F100":"tab:blue", "F25":"tab:blue", "F100-NE":"tab:blue", 

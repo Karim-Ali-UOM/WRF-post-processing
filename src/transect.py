@@ -168,8 +168,9 @@ class TransectFlightsPlot(order):
             ax.set_ylim(12,17)
             ax.set_yticks([12,13,14,15,16,17])
             ax.set_xticks([53.9,53.95,54,54.05,54.1,54.15,54.2,54.25])
-            ax.axvline(x = 53.95, color = "grey", linestyle = "dotted")
-            ax.axvline(x = 54.15, color = "grey", linestyle = "dotted")
+            # ax.axvline(x = 53.95, color = "grey", linestyle = "dotted")
+            # ax.axvline(x = 54.15, color = "grey", linestyle = "dotted")
+            ax.axvspan(53.95, 54.15, alpha=0.2, color='grey')
             ax.tick_params(axis='both', labelsize=ticksize)
             ax.set_ylabel("U [$\mathrm{m\,s^{-1}}$]", fontsize = labelsize)
             if row == nrows-1:
@@ -191,6 +192,7 @@ class TransectFlightsPlot(order):
             ax.set_ylim(0,3)
             ax.set_yticks([0,0.5,1,1.5,2,2.5,3])
             ax.set_xticks([53.9,53.95,54,54.05,54.1,54.15,54.2,54.25])
+            ax.axvspan(53.95, 54.15, alpha=0.2, color='grey')
             if row == nrows-1:
                 ax.set_xlabel("Lat [$^{\circ}$]", fontsize = labelsize)
             else:

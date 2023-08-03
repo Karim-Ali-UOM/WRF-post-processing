@@ -613,10 +613,10 @@ def q2BudgetColor(field):
 
 def q2BudgetTag(field):
     if field == qvTransportName(): return "$\mathcal{Q}_w$"
-    elif field == qsName(): return "$\mathcal{Q}_s$"
-    elif field == qbName(): return "$\mathcal{Q}_b$"
-    elif field == qdName(): return "$\mathcal{Q}_d$"
-    elif field == qtName(): return "$\mathcal{Q}$"
+    elif field == qsName(): return "${Q}_s$"
+    elif field == qbName(): return "${Q}_b$"
+    elif field == qdName(): return "${Q}_d$"
+    elif field == qtName(): return "${Q}$"
     else: return "None"
 
 def toLetters(i):

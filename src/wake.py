@@ -375,7 +375,7 @@ class windFarmWakeStats(order):
                 ax.set_yticks([0,0.5,1,1.5,2,2.5,3])
                 ax.set_xticks([])
             elif j == 1:
-                ax.set_ylabel("$\mathrm{\mathcal{L}_w}$ [km]", fontsize = labelsize)
+                ax.set_ylabel("$\mathrm{L_w}$ [km]", fontsize = labelsize)
                 ax.set_ylim([0,130])
                 ax.set_yticks([0,20,40,60,80,100,120])
         
